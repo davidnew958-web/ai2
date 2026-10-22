@@ -1,0 +1,6 @@
+{
+  "name": "SocialSync AI",
+  "description": "A web-based social media management dashboard with AI-powered content generation and scheduling.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

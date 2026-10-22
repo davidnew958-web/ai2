@@ -1,0 +1,39 @@
+{
+  "entities": {
+    "user": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    },
+    "post": {
+      "title": "Post",
+      "description": "Scheduled social media post",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "content": { "type": "string", "maxLength": 280 },
+        "platform": { "type": "string", "enum": ["instagram", "linkedin", "twitter", "facebook", "pinterest", "tiktok"] },
+        "scheduledAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["draft", "scheduled", "posted"] }
+      },
+      "required": ["userId", "content", "platform", "scheduledAt", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "user",
+      "description": "User profile documents"
+    },
+    "/users/{userId}/posts/{postId}": {
+      "schema": "post",
+      "description": "User's scheduled posts"
+    }
+  }
+}
